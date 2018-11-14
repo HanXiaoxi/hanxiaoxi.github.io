@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Typora一些常用的快捷键]]></title>
+    <title><![CDATA[Typora快捷键]]></title>
     <url>%2F2018%2F11%2F14%2FTypora%2F</url>
     <content type="text"><![CDATA[Typora快捷键无序列表1输入-之后输入空格 有序列表1输入数字+“.”之后输入空格 任务列表1-[空格]空格 文字 标题1ctrl+数字 表格1ctrl+t 生成目录1[TOC]按回车 选中一整行1ctrl+l 选中单词1ctrl+d 选中相同格式的文字1ctrl+e 跳转到文章开头1ctrl+home 跳转到文章结尾1ctrl+end 搜索1ctrl+f 替换1ctrl+h 引用1输入&gt;之后输入空格 代码块1ctrl+alt+f 加粗1ctrl+b 倾斜1ctrl+i 下划线1ctrl+u 删除线1alt+shift+5 插入图片1直接拖动到指定位置即可或者ctrl+shift+i 插入链接1ctrl+k 插入代码1```+语言 例如 ```js就是插入js代码]]></content>
       <categories>
