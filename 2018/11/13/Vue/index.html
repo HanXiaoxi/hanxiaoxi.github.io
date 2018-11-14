@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,7 +84,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '6.5.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: false,
@@ -121,7 +121,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/13/iX3T2j.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/13/iX37xs.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/13/iX3XZV.png">
-<meta property="og:updated_time" content="2018-11-14T06:17:41.483Z">
+<meta property="og:updated_time" content="2018-11-14T06:43:34.508Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue">
 <meta name="twitter:description" content="Vue1 vue简介Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。和AngularJS的语法非常的相似。 Vue 的一些语法和 AngularJS 的很相似 (例如 v-if vs ng-if)。因为 AngularJS 是 Vue 早期开发的灵感来源。然而，AngularJS 中存在的许多问题，在 Vue 中已经得到解决。 1.1 MVVM模式MVVM模式">
@@ -241,6 +241,8 @@
     
 
     
+      
+    
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
@@ -258,8 +260,10 @@
     
 
     
+      
+    
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">1</span></a>
 
   </li>
         
@@ -275,8 +279,10 @@
     
 
     
+      
+    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>时间轴</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>时间轴<span class="badge">5</span></a>
 
   </li>
         
@@ -292,8 +298,10 @@
     
 
     
+      
+    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">5</span></a>
 
   </li>
         
@@ -308,6 +316,8 @@
       
     
 
+    
+      
     
 
     <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
@@ -450,7 +460,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-14 14:17:41" itemprop="dateModified" datetime="2018-11-14T14:17:41+08:00">2018-11-14</time>
+                <time title="修改时间：2018-11-14 14:43:34" itemprop="dateModified" datetime="2018-11-14T14:43:34+08:00">2018-11-14</time>
               
             
           </span>
@@ -517,6 +527,7 @@
 <p>M ： Model  (数据)</p>
 <p>V  ：View（视图）–静态页面</p>
 <p>VM ：vue 的实例 </p>
+<a id="more"></a>
 <p><img src="https://s1.ax1x.com/2018/11/13/iX3UDx.png" alt="iX3UDx.png"><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">      <span class="comment">// this  ---》 当前的 VM的实例</span></span><br><span class="line">    el:<span class="string">"#id"</span>,   <span class="comment">// id任意即可</span></span><br><span class="line">    data:&#123;</span><br><span class="line">        message:<span class="string">"hello..."</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <h2 id="2-Vue常用的指令"><a href="#2-Vue常用的指令" class="headerlink" title="2 Vue常用的指令"></a>2 Vue常用的指令</h2><h3 id="2-1-插值表达式"><a href="#2-1-插值表达式" class="headerlink" title="2.1 插值表达式"></a>2.1 插值表达式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;  message &#125;&#125;   <span class="comment">// 表达式内可以 写算术运算， 调用vue的方法， 但是不可以定义 js的变量等</span></span><br></pre></td></tr></table></figure>
 <h3 id="2-2-v-on"><a href="#2-2-v-on" class="headerlink" title="2.2 v-on"></a>2.2 v-on</h3><p><strong>v-on:</strong>click ,  v-on:keydown   和原生js 一样的，vue给我们提供简写的方式  <strong>@click</strong>, 绑定事件的处理</p>
@@ -666,6 +677,19 @@
               
 
               
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
 
               
                 
@@ -680,7 +704,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -690,6 +718,32 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/HanXiaoxi/hanxiaoxi.github.io" title="GitHub &rarr; https://github.com/HanXiaoxi/hanxiaoxi.github.io" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:791242304@qq.com" title="E-Mail &rarr; mailto:791242304@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
           
 
           
@@ -755,7 +809,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.5.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.5.0</div>
  -->
 
 
