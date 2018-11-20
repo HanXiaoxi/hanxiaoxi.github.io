@@ -117,7 +117,7 @@
 <meta property="og:description" content="异常处理如下代码 12345678910111213 //添加页面  public CmsPageResult add(CmsPage cmsPage)&amp;#123;//校验页面是否存在，根据页面名称、站点Id、页面webpath查询      CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cms">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2018/11/20/5bf3be9591c70.png">
-<meta property="og:updated_time" content="2018-11-20T07:59:32.858Z">
+<meta property="og:updated_time" content="2018-11-20T08:07:50.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全局异常处理">
 <meta name="twitter:description" content="异常处理如下代码 12345678910111213 //添加页面  public CmsPageResult add(CmsPage cmsPage)&amp;#123;//校验页面是否存在，根据页面名称、站点Id、页面webpath查询      CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cms">
@@ -439,7 +439,7 @@
                 
               
 
-              <time title="创建时间：2018-11-20 10:58:45 / 修改时间：15:59:32" itemprop="dateCreated datePublished" datetime="2018-11-20T10:58:45+08:00">2018-11-20</time>
+              <time title="创建时间：2018-11-20 10:58:45 / 修改时间：16:07:50" itemprop="dateCreated datePublished" datetime="2018-11-20T10:58:45+08:00">2018-11-20</time>
             
 
             
@@ -525,6 +525,7 @@
       
         <h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><p>如下代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//添加页面</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> CmsPageResult <span class="title">add</span><span class="params">(CmsPage cmsPage)</span></span>&#123;</span><br><span class="line"><span class="comment">//校验页面是否存在，根据页面名称、站点Id、页面webpath查询</span></span><br><span class="line">      CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(), cmsPage.getSiteId(), cmsPage.getPageWebPath());</span><br><span class="line">       <span class="keyword">if</span>(cmsPage1==<span class="keyword">null</span>)&#123;</span><br><span class="line">          cmsPage.setPageId(<span class="keyword">null</span>);<span class="comment">//添加页面主键由spring data 自动生成</span></span><br><span class="line">          cmsPageRepository.save(cmsPage);</span><br><span class="line">          <span class="comment">//返回结果</span></span><br><span class="line">          CmsPageResult cmsPageResult = <span class="keyword">new</span> CmsPageResult(CommonCode.SUCCESS,cmsPage);</span><br><span class="line">          <span class="keyword">return</span> cmsPageResult;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> CmsPageResult(CommonCode.FAIL,<span class="keyword">null</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>1、上边的代码只要操作不成功仅向用户返回“错误代码：11111，失败信息：操作失败”，无法区别具体的错误信息。</p>
 <p>2、service方法在执行过程出现异常在哪捕获？在service中需要都加try/catch，如果在controller也需要添加try/catch，代码冗余严重且不易维护。</p>
 <p>解决方案：</p>
