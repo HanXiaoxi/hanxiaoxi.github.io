@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[重点笔记]]></title>
+    <url>%2F2018%2F11%2F20%2F%E9%87%8D%E7%82%B9%2F</url>
+    <content type="text"><![CDATA[VUE页面之间传递参数 通过在路由上添加key/value串（?传参）使用this.$route.query来取参。 例如： /router?id=123 可以通过this.$router.query.id获取参数id的值 通过将参数作为路由的一部分（restful风格）进行传参使用this.$route.params来获取 例如： 定义的路由为 /router/:id，请求/router/123时可以通过this.$router.params.id来获取，这种情况下使用this.$router.query.id是获取不到的]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[全局异常处理]]></title>
+    <url>%2F2018%2F11%2F20%2F%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%2F</url>
+    <content type="text"><![CDATA[异常处理如下代码 12345678910111213 //添加页面 public CmsPageResult add(CmsPage cmsPage)&#123;//校验页面是否存在，根据页面名称、站点Id、页面webpath查询 CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(), cmsPage.getSiteId(), cmsPage.getPageWebPath()); if(cmsPage1==null)&#123; cmsPage.setPageId(null);//添加页面主键由spring data 自动生成 cmsPageRepository.save(cmsPage); //返回结果 CmsPageResult cmsPageResult = new CmsPageResult(CommonCode.SUCCESS,cmsPage); return cmsPageResult; &#125; return new CmsPageResult(CommonCode.FAIL,null); &#125; 1、上边的代码只要操作不成功仅向用户返回“错误代码：11111，失败信息：操作失败”，无法区别具体的错误信息。 2、service方法在执行过程出现异常在哪捕获？在service中需要都加try/catch，如果在controller也需要添加try/catch，代码冗余严重且不易维护。 解决方案： 1、在Service方法中的编码顺序是先校验判断，有问题则抛出具体的异常信息，最后执行具体的业务操作，返回成功信息。 2、在统一异常处理类中去捕获异常，无需controller捕获异常，向用户返回统一规范的响应信息。 1234567891011121314151617181920//添加页面public CmsPageResult add(CmsPage cmsPage)&#123; //校验cmsPage是否为空 if(cmsPage == null)&#123; //抛出异常，非法请求 //... &#125; //根据页面名称查询（页面名称已在mongodb创建了唯一索引） CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(), cmsPage.getSiteId(), cmsPage.getPageWebPath()); //校验页面是否存在，已存在则抛出异常 if(cmsPage1 !=null)&#123; //抛出异常，已存在相同的页面名称 //... &#125; cmsPage.setPageId(null);//添加页面主键由spring data 自动生成 CmsPage save = cmsPageRepository.save(cmsPage); //返回结果 CmsPageResult cmsPageResult = new CmsPageResult(CommonCode.SUCCESS,save); return cmsPageResult;&#125; 自定义异常：主要是处理和业务相关的异常 不可预知的异常：主要是处理和业务无关的运行时异常 自定义异常类继承RuntimeException，对代码没有侵入性 统一异常捕获类，在类上加上@ControllerAdvice注解 声明一个方法，加上@ExceptionHandler注解，参数中如果没有写具体的异常，那么默认会拦截所有的异常。如果需要指定拦截的异常，那么需要给出拦截类的class。 springboot日志 日志：开发环境设置level为DEBUG，生产环境设置为ERROR。 springboot中集成了日志记录功能，只需要将日志的配置文件logback-spring.xml（必须是这个文件名）放在resource目录下即可。 在异常类中定义 1private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionCatch.class); 例如 1234567891011121314@ControllerAdvicepublic class ExceptionCatch &#123; private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionCatch.class); //捕获 CustomException异常 @ExceptionHandler(CustomException.class) @ResponseBody public ResponseResult customException(CustomException e) &#123; LOGGER.error("catch exception : &#123;&#125;\r\nexception: ",e.getMessage(), e);//注意，error中的&#123;&#125;一定要写，否则，无法记录日志。 ResultCode resultCode = e.getResultCode(); ResponseResult responseResult = new ResponseResult(resultCode); return responseResult; &#125;&#125; 普通的springMVC全局异常（项目有且只有一个全局异常类） 编写全局异常类GlobalExceptionResolver并实现HandlerExceptionResolver，并重写resolveException方法. 在springmvc的配置文件中引入bean 1&lt;bean class="com.han.springmvc.exception.GlobalExceptionResolver"/&gt;]]></content>
+      <categories>
+        <category>异常</category>
+      </categories>
+      <tags>
+        <tag>全局异常</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[前后端分离]]></title>
     <url>%2F2018%2F11%2F19%2F%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%2F</url>
     <content type="text"><![CDATA[前后端分离实现1 Api请求及响应规范为了严格按照接口进行开发，提高效率，对请求及响应格式进行规范化。 1、get 请求时，采用key/value格式请求，SpringMVC可采用基本类型的变量接收，也可以采用对象接收。 2、Post请求时，可以提交form表单数据（application/x-www-form-urlencoded）和Json数据（Content-Type=application/json），文件等多部件类型（multipart/form-data）三种数据格式，SpringMVC接收Json数据使用@RequestBody注解解析请求的json数据。 3、响应结果统一信息为：是否成功、操作代码、提示信息及自定义数据。 4、响应结果统一格式为json。 2 Api定义约束Api定义使用SpringMVC来完成，由于此接口后期将作为微服务远程调用使用，在定义接口时有如下限制： 1、@PathVariable 统一指定参数名称，如：@PathVariable(“id”)2、@RequestParam统一指定参数名称，如：@RequestParam（”id”）]]></content>
