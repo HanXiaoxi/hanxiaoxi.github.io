@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[freemark页面静态化]]></title>
+    <url>%2F2018%2F11%2F20%2Ffreemarker%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96%2F</url>
+    <content type="text"><![CDATA[Freemarker页面静态化freemarker的核心指令1. list指令12345678&lt;#list stus as stu&gt; &lt;tr&gt; &lt;td&gt;$&#123;stu_index + 1&#125;&lt;/td&gt; &lt;td&gt;$&#123;stu.name&#125;&lt;/td&gt; &lt;td&gt;$&#123;stu.age&#125;&lt;/td&gt; &lt;td&gt;$&#123;stu.mondy&#125;&lt;/td&gt; &lt;/tr&gt; &lt;/#list&gt; 2. 遍历Map数据123456789101112131415方式一： 输出stu1的学生信息：&lt;br/&gt;姓名：$&#123;stuMap[&apos;stu1&apos;].name&#125;&lt;br/&gt;年龄：$&#123;stuMap[&apos;stu1&apos;].age&#125;&lt;br/&gt;方式二： 输出stu1的学生信息：&lt;br/&gt;姓名：$&#123;stuMap.stu1.name&#125;&lt;br/&gt;年龄：$&#123;stuMap.stu1.age&#125;&lt;br/&gt;方式三：&lt;#list stuMap?keys as k&gt;&lt;tr&gt; &lt;td&gt;$&#123;k_index + 1&#125;&lt;/td&gt; &lt;td&gt;$&#123;stuMap[k].name&#125;&lt;/td&gt; &lt;td&gt;$&#123;stuMap[k].age&#125;&lt;/td&gt; &lt;td &gt;$&#123;stuMap[k].mondy&#125;&lt;/td&gt;&lt;/tr&gt;&lt;/#list&gt; 3. if指令1&lt;#if stu.name ==&apos;小明&apos;&gt;style=&quot;background:red;&quot;&lt;/#if&gt;&gt;$&#123;stu.name&#125; 4. 运算符1、算数运算符 FreeMarker表达式中完全支持算术运算,FreeMarker支持的算术运算符包括:+, - , * , / , % 2、逻辑运算符 逻辑运算符有如下几个: 逻辑与:&amp;&amp; 逻辑或:|| 逻辑非:! 逻辑运算符只能作用于布尔值,否则将产生错误 3、比较运算符 表达式中支持的比较运算符有如下几个: ​ 1) =或者==:判断两个值是否相等. ​ 2) !=:判断两个值是否不等. ​ 3) &gt;或者gt:判断左边值是否大于右边值 ​ 4) &gt;=或者gte:判断左边值是否大于等于右边值 ​ 5) &lt;或者lt:判断左边值是否小于右边值 ​ 6) &lt;=或者lte:判断左边值是否小于等于右边值注意: =和!=可以用于字符串,数值和日期来比较是否相等,但=和!=两边必须是相同类型的值,否则会产生错误,而且FreeMarker是精确比较,”x”,”x “,”X”是不等的.其它的运行符可以作用于数字和日期,但不能作用于字符串,大部分的时候,使用gt等字母运算符代替&gt;会有更好的效果,因为 FreeMarker会把&gt;解释成FTL标签的结束字符,当然,也可以使用括号来避免这种情况,如:&lt;#if (x&gt;y)&gt; 5. 空值处理1、判断某变量是否存在使用 “??” 用法为:variable??,如果该变量存在,返回true,否则返回false例：为防止stus为空报错可以加上判断如下： 12345 &lt;#if stus??&gt; &lt;#list stus as stu&gt; ...... &lt;/#list&gt; &lt;/#if&gt; 2、缺失变量默认值使用 “!” 使用!要以指定一个默认值，当变量为空时显示默认值。例： ${name!’’}表示如果name为空显示空字符串。如果是嵌套对象则建议使用（）括起来。例： ${(stu.bestFriend.name)!’’}表示，如果stu或bestFriend或name为空默认显示空字符串。注：!’’后面的空引号可以不写 6. 内建函数内建函数语法格式： 变量+?+函数名称1、和到某个集合的大小${集合名?size}2、日期格式化 1234显示年月日: $&#123;today?date&#125;显示时分秒：$&#123;today?time&#125; 显示日期+时间：$&#123;today?datetime&#125; &lt;br&gt; 自定义格式化： $&#123;today?string(&quot;yyyy年MM月&quot;)&#125; 3、内建函数cmap.put(“point”, 102920122);point是数字型，使用${point}会显示这个数字的值，不并每三位使用逗号分隔。如果不想显示为每三位分隔的数字，可以使用c函数将数字型转成字符串输出${point?c}4、将json字符串转成对象一个例子：其中用到了 assign标签，assign的作用是定义一个变量 123&lt;#assign text=&quot;&#123;&apos;bank&apos;:&apos;工商银行&apos;,&apos;account&apos;:&apos;10101920201920212&apos;&#125;&quot; /&gt;&lt;#assign data=text?eval /&gt;开户行：$&#123;data.bank&#125; 账号：$&#123;data.account&#125;]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>框架</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[重点笔记]]></title>
     <url>%2F2018%2F11%2F20%2F%E9%87%8D%E7%82%B9%2F</url>
     <content type="text"><![CDATA[VUE页面之间传递参数 通过在路由上添加key/value串（?传参）使用this.$route.query来取参。 例如： /router?id=123 可以通过this.$router.query.id获取参数id的值 通过将参数作为路由的一部分（restful风格）进行传参使用this.$route.params来获取 例如： 定义的路由为 /router/:id，请求/router/123时可以通过this.$router.params.id来获取，这种情况下使用this.$router.query.id是获取不到的]]></content>
