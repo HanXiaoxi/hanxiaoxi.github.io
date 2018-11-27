@@ -117,7 +117,7 @@
 <meta property="og:description" content="异常处理如下代码 12345678910111213 //添加页面  public CmsPageResult add(CmsPage cmsPage)&amp;#123;//校验页面是否存在，根据页面名称、站点Id、页面webpath查询      CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cms">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2018/11/20/5bf3be9591c70.png">
-<meta property="og:updated_time" content="2018-11-20T08:07:50.399Z">
+<meta property="og:updated_time" content="2018-11-21T14:32:54.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全局异常处理">
 <meta name="twitter:description" content="异常处理如下代码 12345678910111213 //添加页面  public CmsPageResult add(CmsPage cmsPage)&amp;#123;//校验页面是否存在，根据页面名称、站点Id、页面webpath查询      CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cms">
@@ -278,7 +278,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>时间轴<span class="badge">9</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>时间轴<span class="badge">10</span></a>
 
   </li>
         
@@ -439,12 +439,24 @@
                 
               
 
-              <time title="创建时间：2018-11-20 10:58:45 / 修改时间：16:07:50" itemprop="dateCreated datePublished" datetime="2018-11-20T10:58:45+08:00">2018-11-20</time>
+              <time title="创建时间：2018-11-20 10:58:45" itemprop="dateCreated datePublished" datetime="2018-11-20T10:58:45+08:00">2018-11-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-21 22:32:54" itemprop="dateModified" datetime="2018-11-21T22:32:54+08:00">2018-11-21</time>
               
             
           </span>
@@ -489,7 +501,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.8k</span>
+                <span title="本文字数">3k</span>
               
 
               
@@ -533,13 +545,17 @@
 <p>2、在统一异常处理类中去捕获异常，无需controller捕获异常，向用户返回统一规范的响应信息。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//添加页面</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> CmsPageResult <span class="title">add</span><span class="params">(CmsPage cmsPage)</span></span>&#123;</span><br><span class="line">    <span class="comment">//校验cmsPage是否为空</span></span><br><span class="line">    <span class="keyword">if</span>(cmsPage == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="comment">//抛出异常，非法请求</span></span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//根据页面名称查询（页面名称已在mongodb创建了唯一索引）</span></span><br><span class="line">    CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(), cmsPage.getSiteId(), cmsPage.getPageWebPath());</span><br><span class="line">    <span class="comment">//校验页面是否存在，已存在则抛出异常</span></span><br><span class="line">    <span class="keyword">if</span>(cmsPage1 !=<span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="comment">//抛出异常，已存在相同的页面名称</span></span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">    cmsPage.setPageId(<span class="keyword">null</span>);<span class="comment">//添加页面主键由spring data 自动生成</span></span><br><span class="line">    CmsPage save = cmsPageRepository.save(cmsPage);</span><br><span class="line">    <span class="comment">//返回结果</span></span><br><span class="line">    CmsPageResult cmsPageResult = <span class="keyword">new</span> CmsPageResult(CommonCode.SUCCESS,save);</span><br><span class="line">    <span class="keyword">return</span> cmsPageResult;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://i.loli.net/2018/11/20/5bf3be9591c70.png" alt="1532595345826.png"></p>
+<p>1、在controller、service、dao中程序员抛出自定义异常；springMVC框架抛出框架异常类型</p>
+<p>2、统一由异常捕获类捕获异常，并进行处理</p>
+<p>3、捕获到自定义异常则直接取出错误代码及错误信息，响应给用户。</p>
+<p>4、捕获到非自定义异常类型首先从Map中找该异常类型是否对应具体的错误代码，如果有则取出错误代码和错误信息并响应给用户，如果从Map中找不到异常类型所对应的错误代码则统一为99999错误代码并响应给用户。</p>
+<p>5、将错误代码及错误信息以Json格式响应给用户。</p>
 <p>自定义异常：主要是处理和业务相关的异常</p>
 <p>不可预知的异常：主要是处理和业务无关的运行时异常</p>
 <p>自定义异常类继承RuntimeException，对代码没有侵入性</p>
 <p>统一异常捕获类，在类上加上@ControllerAdvice注解</p>
 <p>声明一个方法，加上@ExceptionHandler注解，参数中如果没有写具体的异常，那么默认会拦截所有的异常。如果需要指定拦截的异常，那么需要给出拦截类的class。</p>
-<p>springboot日志</p>
-<p>日志：开发环境设置level为DEBUG，生产环境设置为ERROR。</p>
+<h1 id="springboot日志"><a href="#springboot日志" class="headerlink" title="springboot日志"></a>springboot日志</h1><p>日志：开发环境设置level为DEBUG，生产环境设置为ERROR。</p>
 <p>springboot中集成了日志记录功能，只需要将日志的配置文件logback-spring.xml（必须是这个文件名）放在resource目录下即可。</p>
 <p>在异常类中定义</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(ExceptionCatch.class);</span><br></pre></td></tr></table></figure>
@@ -672,7 +688,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -789,7 +805,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#异常处理"><span class="nav-number">1.</span> <span class="nav-text">异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#普通的springMVC全局异常（项目有且只有一个全局异常类）"><span class="nav-number">1.1.</span> <span class="nav-text">普通的springMVC全局异常（项目有且只有一个全局异常类）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#异常处理"><span class="nav-number">1.</span> <span class="nav-text">异常处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#springboot日志"><span class="nav-number">2.</span> <span class="nav-text">springboot日志</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#普通的springMVC全局异常（项目有且只有一个全局异常类）"><span class="nav-number">2.1.</span> <span class="nav-text">普通的springMVC全局异常（项目有且只有一个全局异常类）</span></a></li></ol></li></ol></div>
             
 
           </div>
