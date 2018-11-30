@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="java基础1.java中的“==”和equals()方法的区别 12(1) ==，如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地址.(2) equals方法不能作用于基本数据类型的变量如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址；可以对equals方法重写，比较的是所指向的对象的内容。  为">
+  <meta name="description" content="java基础1.java中的“==”和equals()方法的区别 12(1) ==，如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地址.(2) equals方法不能作用于基本数据类型的变量如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址；可以对equals方法重写，比较的是所指向的对象的内容。">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java基础总结">
 <meta property="og:url" content="http://yoursite.com/2018/11/30/java基础总结/index.html">
 <meta property="og:site_name" content="Xiaoxi">
-<meta property="og:description" content="java基础1.java中的“==”和equals()方法的区别 12(1) ==，如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地址.(2) equals方法不能作用于基本数据类型的变量如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址；可以对equals方法重写，比较的是所指向的对象的内容。  为">
+<meta property="og:description" content="java基础1.java中的“==”和equals()方法的区别 12(1) ==，如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地址.(2) equals方法不能作用于基本数据类型的变量如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址；可以对equals方法重写，比较的是所指向的对象的内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-30T16:37:19.534Z">
+<meta property="og:updated_time" content="2018-11-30T16:39:30.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java基础总结">
-<meta name="twitter:description" content="java基础1.java中的“==”和equals()方法的区别 12(1) ==，如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地址.(2) equals方法不能作用于基本数据类型的变量如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址；可以对equals方法重写，比较的是所指向的对象的内容。  为">
+<meta name="twitter:description" content="java基础1.java中的“==”和equals()方法的区别 12(1) ==，如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地址.(2) equals方法不能作用于基本数据类型的变量如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址；可以对equals方法重写，比较的是所指向的对象的内容。">
 
 
 
@@ -454,7 +454,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-01 00:37:19" itemprop="dateModified" datetime="2018-12-01T00:37:19+08:00">2018-12-01</time>
+                <time title="修改时间：2018-12-01 00:39:30" itemprop="dateModified" datetime="2018-12-01T00:39:30+08:00">2018-12-01</time>
               
             
           </span>
@@ -535,17 +535,13 @@
       
         <h1 id="java基础"><a href="#java基础" class="headerlink" title="java基础"></a>java基础</h1><p>1.java中的“==”和equals()方法的区别</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(1) ==，如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地址.</span><br><span class="line">(2) equals方法不能作用于基本数据类型的变量如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址；可以对equals方法重写，比较的是所指向的对象的内容。</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><p>为什么不能用abstract修饰属性、私有方法、构造器、静态方法、final的方法</p>
+<a id="more"></a>
+<p>2.为什么不能用abstract修饰属性、私有方法、构造器、静态方法、final的方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java中规定，abstract只能修饰类和方法</span><br><span class="line">修饰的类为抽象类，抽象类不能实例化，需要子类继承并实现抽象方法。</span><br><span class="line">修饰的方法为抽象方法，只有声明方法，并没有实现，需要子类继承实现</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>abstract class 和 interface的区别</p>
+<p>3.abstract class 和 interface的区别</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">抽象类：</span><br><span class="line">    含有abstract修饰符的class即为抽象类</span><br><span class="line">    abstract 类不能创建的实例对象。</span><br><span class="line">    含有abstract方法的类必须定义为abstract class</span><br><span class="line">    abstract class类中的方法不必是抽象的。</span><br><span class="line">    abstract class类中定义抽象方法必须在具体(Concrete)子类中实现，所以，不能有抽象构造方法或抽象静态方法。如果的子	   类没有实现抽象父类中的所有抽象方法，那么子类也必须定义为abstract类型。</span><br><span class="line"></span><br><span class="line">接口（interface）：</span><br><span class="line">    接口中的所有方法都必须是抽象的</span><br><span class="line">    接口中的方法定义默认为public abstract类型</span><br><span class="line">    接口中的成员变量类型默认为public static final。</span><br><span class="line"></span><br><span class="line">语法区别：</span><br><span class="line">1.抽象类可以有构造方法，接口中不能有构造方法。</span><br><span class="line">2.抽象类中可以有普通成员变量，接口中没有普通成员变量</span><br><span class="line">3.抽象类中可以包含非抽象的普通方法，接口中的所有方法必须都是抽象的，不能有非抽象的普通方法。</span><br><span class="line">4. 抽象类中的抽象方法的访问类型可以是public，protected和（默认类型,虽然eclipse下不报错，但应该也不行），但接口中的抽象方法只能是public类型的，并且默认即为public abstract类型。</span><br><span class="line">5. 抽象类中可以包含静态方法，接口中不能包含静态方法</span><br><span class="line">6. 抽象类和接口中都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以任意，但接口中定义的变量只能是public static final类型，并且默认即为public static final类型。</span><br><span class="line">7. 一个类可以实现多个接口，但只能继承一个抽象类。</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对面向对象特征多态的理解</p>
+<p>4.对面向对象特征多态的理解</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">父类引用指向子类对象，可以调用子类重写的父类方法</span><br><span class="line">基于继承实现的多态：对于引用子类的父类类型，在处理该引用时，它适用于继承该父类的所有子类，子类对象的不同，对方法的实现也就不同，执行相同动作产生的行为也就不同。</span><br><span class="line">	如果父类是抽象类，那么子类必须要实现父类中所有的抽象方法，这样该父类所有的子类一定存在统一的对外接口，但其内部的具体实现可以各异。这样我们就可以使用顶层类提供的统一接口来处理该层次的方法。</span><br><span class="line">	</span><br><span class="line">基于接口的多态：在接口的多态中，指向接口的引用必须是指定这实现了该接口的一个类的实例程序，在运行时，根据对象引用的实际类型来执行对应的方法。</span><br><span class="line">   继承都是单继承，只能为一组相关的类提供一致的服务接口。但是接口可以是多继承多实现，它能够利用一组相关或者不相关的接口进行组合与扩充，能够对外提供一致的服务接口。所以它相对于继承来说有更好的灵活性。</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
 <p>5.封装继承多态</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">封装可以隐藏实现细节，使得代码模块化；继承可以扩展已存在的代码模块（类）；它们的目的都是为了——代码重用。而多态除了代码的复用性外，还可以解决项目中紧偶合的问题,提高程序的可扩展性.</span><br></pre></td></tr></table></figure>
 <p>6.String类的常用方法有哪些 ？</p>
